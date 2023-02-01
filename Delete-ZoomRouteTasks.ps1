@@ -3,10 +3,13 @@
 #Idea was taken from this script https://xplantefeve.io/posts/SchdTskOnEvent
 # Created 1/4/2023
 # v1 01-04-2023 - Initial Build 
+# V1.1 02-02-2023 Documented code with comments
 
+#Define event IDs we want to bind to
 $ConnectedID = 20225
 $DisconnectedID = 20226
 
+#Create subscription for binding to events
 $class = cimclass MSFT_TaskEventTrigger root/Microsoft/Windows/TaskScheduler
 $trigger = $class | New-CimInstance -ClientOnly
 $trigger.Enabled = $true
@@ -31,4 +34,5 @@ $RegSchTaskParameters = @{
     Trigger     = $Trigger
 }
 
+#Create actual task
 Register-ScheduledTask @RegSchTaskParameters -Verbose
