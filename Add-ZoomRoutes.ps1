@@ -4,6 +4,7 @@
 # Created 1/4/2023
 # v1 01-04-2023 - Initial Build
 # v1.1 01-09-2023 - Updated method for default route, added logic to kill existing Zoom phone TCP connections
+# v1.2 02-01-2023 - Added command to remove route as they are added to prevent double entries
 
 #This script should run during VPN connections
 #Get default GW
@@ -35,7 +36,8 @@ $ZoomRoutes.Count
 #Foreach to parse Zoom IPs
 foreach ($IPBlock in $ZoomRoutes) {
     Write-host "Adding route to $IPBlock via $DestinationGW"
-#    New-NetRoute 
+	#remove route first, this prevents double entries if moving between networks (wifi to ethernet)
+	route delete $IPBlock
     route add $IPBlock $DestinationGW
     }
 
