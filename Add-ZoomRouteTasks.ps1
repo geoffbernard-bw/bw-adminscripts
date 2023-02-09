@@ -4,6 +4,7 @@
 # Created 1/4/2023
 # v1 01-04-2023 - Initial Build 
 # V1.1 02-02-2023 Documented code with comments
+# v1.2 02-09-2023 - Updated script location from \temp to \scripts
 
 #Define Event IDs we are going to bind to
 $ConnectedID = 20225
@@ -17,7 +18,7 @@ $trigger.Subscription = '<QueryList><Query Id="0" Path="Application"><Select Pat
 
 $ActionParameters = @{
     Execute  = 'C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe'
-    Argument = '-NoProfile -File C:\temp\Add-ZoomRoutes.ps1'
+    Argument = '-NoProfile -File C:\scripts\Add-ZoomRoutes.ps1'
 }
 
 $Action = New-ScheduledTaskAction @ActionParameters
