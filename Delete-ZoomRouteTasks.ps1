@@ -5,6 +5,7 @@
 # v1 01-04-2023 - Initial Build 
 # V1.1 02-02-2023 Documented code with comments
 # v1.2 02-09-2023 - Updated script location from \temp to \scripts
+# v1.3 03-08-2023 - Fixed incorrect script getting called during disconnect
 
 #Define event IDs we want to bind to
 $ConnectedID = 20225
@@ -18,7 +19,7 @@ $trigger.Subscription = '<QueryList><Query Id="0" Path="Application"><Select Pat
 
 $ActionParameters = @{
     Execute  = 'C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe'
-    Argument = '-NoProfile -File C:\scripts\Add-ZoomRoutes.ps1'
+    Argument = '-NoProfile -File C:\scripts\Delete-ZoomRoutes.ps1'
 }
 
 $Action = New-ScheduledTaskAction @ActionParameters
